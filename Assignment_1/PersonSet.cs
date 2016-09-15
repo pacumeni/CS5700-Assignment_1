@@ -6,52 +6,52 @@ namespace Assignment_1
 {
     public class PersonSet : IEnumerable<Person>
     {
-        private List<Person> _accounts = new List<Person>();
+        private List<Person> _persons = new List<Person>();
 
         public LoadSaveStrategy StorageStrategy { get; set; }
 
-        public void Add(Person account)
+        public void Add(Person person)
         {
-            if (account != null)
-                _accounts.Add(account);
+            if (person != null)
+                _persons.Add(person);
         }
 
         public void Load(string filename)
         {
             if (!string.IsNullOrWhiteSpace(filename) && StorageStrategy != null)
-                _accounts = StorageStrategy.Load(filename);
+                _persons = StorageStrategy.Load(filename);
         }
 
         public void Save(string filename)
         {
             if (!string.IsNullOrWhiteSpace(filename) && StorageStrategy != null)
-                StorageStrategy.Save(filename, _accounts);
+                StorageStrategy.Save(filename, _persons);
         }
 
         public IEnumerator<Person> GetEnumerator()
         {
-            return _accounts.GetEnumerator();
+            return _persons.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return new PersonEnum(_accounts.ToArray());
+            return new PersonEnum(_persons.ToArray());
         }
     }
 
     public class PersonEnum : IEnumerator
     {
-        private readonly Person[] _accounts;
+        private readonly Person[] _persons;
         private int _currentPosition = -1;
 
-        public PersonEnum(Person[] accounts)
+        public PersonEnum(Person[] persons)
         {
-            _accounts = accounts;
+            _persons = persons;
         }
 
         public bool MoveNext()
         {
-            return (++_currentPosition < _accounts.Length);
+            return (++_currentPosition < _persons.Length);
         }
 
         public void Reset()
@@ -65,7 +65,7 @@ namespace Assignment_1
         {
             get
             {
-                return (_currentPosition >= 0 && _currentPosition < _accounts.Length) ? _accounts[_currentPosition] : null;
+                return (_currentPosition >= 0 && _currentPosition < _persons.Length) ? _persons[_currentPosition] : null;
             }
         }
     }

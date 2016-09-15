@@ -68,9 +68,11 @@ namespace Assignment_1
             else
                 storageStrategy = new JsonLoadSave();
 
-            
             // Run the analyzer
-            //MatchAlgorithms.isAMatch();
+            MatchAlgorithms m1 = new MatchingStrategy1();
+            m1.Storage = storageStrategy; // storageStrategy;
+            m1.InputFile = inputFilename.Text;
+            Console.WriteLine(m1.isAMatch());
 
             //// Display the result;
             //beginningBalance.Text = FormatToDollars(analyzer.BeginningTotal);

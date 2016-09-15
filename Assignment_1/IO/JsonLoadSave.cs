@@ -9,25 +9,25 @@ namespace Assignment_1.IO
     {
         public override List<Person> Load(string filename)
         {
-            List<Person> accounts = null;
+            List<Person> persons = null;
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Person>), new Type[] { typeof(Person), typeof(Adult), typeof(Child) });
 
             if (OpenReader(filename))
             {
-                accounts = serializer.ReadObject(Reader.BaseStream) as List<Person>;
+                persons = serializer.ReadObject(Reader.BaseStream) as List<Person>;
                 Reader.Close();
             }
 
-            return accounts;
+            return persons;
         }
 
-        public override void Save(string filename, List<Person> accounts)
+        public override void Save(string filename, List<Person> persons)
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Person>), new Type[] { typeof(Person), typeof(Adult), typeof(Child) });
 
             if (OpenWriter(filename))
             {
-                serializer.WriteObject(Writer.BaseStream, accounts);
+                serializer.WriteObject(Writer.BaseStream, persons);
                 Writer.Close();
             }
         }
