@@ -25,5 +25,11 @@ namespace Assignment_1
         public int BirthDay { get; set; }
         [DataMember]
         public string Gender { get; set; }
+        
+
+        //public string getPhone()
+        //{
+        //    return (string)this.GetType().GetProperty("phone1").GetValue(this, null);
+        //}
     }
 }

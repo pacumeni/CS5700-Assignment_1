@@ -69,16 +69,27 @@ namespace Assignment_1
                 storageStrategy = new JsonLoadSave();
 
             // Run the analyzer
+            Console.WriteLine("Matched pairs");
             MatchAlgorithms m1 = new MatchingStrategy1();
-            m1.Storage = storageStrategy; // storageStrategy;
+            //MatchAlgorithms m2 = new MatchingStrategy2();
+            //MatchAlgorithms m3 = new MatchingStrategy3();
+            //MatchAlgorithms m4 = new MatchingStrategy4();
+            //MatchAlgorithms m5 = new MatchingStrategy5();
+            m1.Storage = storageStrategy;
             m1.InputFile = inputFilename.Text;
-            Console.WriteLine(m1.isAMatch());
+            m1.isAMatch();
 
-            //// Display the result;
-            //beginningBalance.Text = FormatToDollars(analyzer.BeginningTotal);
-            //endingBalance.Text = FormatToDollars(analyzer.EndingTotal);
-            //interestPaid.Text = FormatToDollars(analyzer.InterestPaid);
-            //feesCollected.Text = FormatToDollars(analyzer.FeesCollected);
+            //m2.Storage = storageStrategy;
+            //m2.InputFile = inputFilename.Text;
+
+            //m3.Storage = storageStrategy;
+            //m3.InputFile = inputFilename.Text;
+
+            //m4.Storage = storageStrategy;
+            //m4.InputFile = inputFilename.Text;
+
+            //m5.Storage = storageStrategy;
+            //m5.InputFile = inputFilename.Text;
         }
     }
 }

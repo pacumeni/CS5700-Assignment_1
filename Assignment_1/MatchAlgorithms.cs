@@ -11,6 +11,6 @@ namespace Assignment_1
     {
         LoadSaveStrategy Storage { get; set; }
         string InputFile { get; set; }
-        string isAMatch();
+        bool isAMatch();
     }
 }
