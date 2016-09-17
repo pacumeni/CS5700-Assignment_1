@@ -53,6 +53,10 @@
     <Compile Include="IO\XmlLoadSave.cs" />
     <Compile Include="MatchAlgorithms.cs" />
     <Compile Include="MatchingStrategy1.cs" />
+    <Compile Include="MatchingStrategy2.cs" />
+    <Compile Include="MatchingStrategy3.cs" />
+    <Compile Include="MatchingStrategy4.cs" />
+    <Compile Include="MatchingStrategy5.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonSet.cs" />
     <Compile Include="Program.cs" />

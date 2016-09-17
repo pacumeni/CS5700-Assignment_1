@@ -69,27 +69,41 @@ namespace Assignment_1
                 storageStrategy = new JsonLoadSave();
 
             // Run the analyzer
+            string stringPath = Environment.GetFolderPath(System.Environment.SpecialFolder.DesktopDirectory);
+            using(System.IO.StreamWriter file = new System.IO.StreamWriter(stringPath + @"\matchAssignment.txt"))
+            {
+                file.WriteLine("Matched pairs");
+            }
             Console.WriteLine("Matched pairs");
             MatchAlgorithms m1 = new MatchingStrategy1();
-            //MatchAlgorithms m2 = new MatchingStrategy2();
-            //MatchAlgorithms m3 = new MatchingStrategy3();
-            //MatchAlgorithms m4 = new MatchingStrategy4();
-            //MatchAlgorithms m5 = new MatchingStrategy5();
+            MatchAlgorithms m2 = new MatchingStrategy2();
+            MatchAlgorithms m3 = new MatchingStrategy3();
+            MatchAlgorithms m4 = new MatchingStrategy4();
+            MatchAlgorithms m5 = new MatchingStrategy5();
             m1.Storage = storageStrategy;
             m1.InputFile = inputFilename.Text;
+            Console.WriteLine("Matches using first algorithm: ");
             m1.isAMatch();
 
-            //m2.Storage = storageStrategy;
-            //m2.InputFile = inputFilename.Text;
+            m2.Storage = storageStrategy;
+            m2.InputFile = inputFilename.Text;
+            Console.WriteLine("\nMatches using second algorithm: ");
+            m2.isAMatch();
 
-            //m3.Storage = storageStrategy;
-            //m3.InputFile = inputFilename.Text;
+            m3.Storage = storageStrategy;
+            m3.InputFile = inputFilename.Text;
+            Console.WriteLine("\nMatches using third algorithm: ");
+            m3.isAMatch();
 
-            //m4.Storage = storageStrategy;
-            //m4.InputFile = inputFilename.Text;
+            m4.Storage = storageStrategy;
+            m4.InputFile = inputFilename.Text;
+            Console.WriteLine("\nMatches using fourth algorithm: ");
+            m4.isAMatch();
 
-            //m5.Storage = storageStrategy;
-            //m5.InputFile = inputFilename.Text;
+            m5.Storage = storageStrategy;
+            m5.InputFile = inputFilename.Text;
+            Console.WriteLine("\nMatches using fifth algorithm: ");
+            m5.isAMatch();
         }
     }
 }

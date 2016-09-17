@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Assignment_1
 {
-    public class MatchingStrategy1 : MatchAlgorithms
+    public class MatchingStrategy4 : MatchAlgorithms
     {
         private LoadSaveStrategy storage;
         public LoadSaveStrategy Storage
@@ -22,8 +22,8 @@ namespace Assignment_1
             set { inputFile = value; }
         }
         public bool answer;
-        bool MatchAlgorithms.isAMatch() {
-            
+        bool MatchAlgorithms.isAMatch()
+        {
             PersonSet personSet = new PersonSet() { StorageStrategy = storage };
             personSet.Load(inputFile);
 
@@ -32,7 +32,7 @@ namespace Assignment_1
             var child1 = new Child();
             var child2 = new Child();
             for (var k = 0; k < personSet.Count(); k++)
-            {                
+            {
                 for (var i = 1; i < personSet.Count(); i++)
                 {
                     bool match;
@@ -42,25 +42,29 @@ namespace Assignment_1
                         adult1 = castAsAdult(personSet.ElementAt(k));
                         adult2 = castAsAdult(personSet.ElementAt(i));
                         match = matchAdults(adult1, adult2);
-                    } else if (personSet.ElementAt(k).GetType() == typeof(Adult) && personSet.ElementAt(i).GetType() == typeof(Child))
+                    }
+                    else if (personSet.ElementAt(k).GetType() == typeof(Adult) && personSet.ElementAt(i).GetType() == typeof(Child))
                     {
                         adult1 = castAsAdult(personSet.ElementAt(k));
                         child1 = castAsChild(personSet.ElementAt(i));
                         match = matchAdultChild(adult1, child1);
-                    } else if (personSet.ElementAt(k).GetType() == typeof(Child) && personSet.ElementAt(i).GetType() == typeof(Adult))
+                    }
+                    else if (personSet.ElementAt(k).GetType() == typeof(Child) && personSet.ElementAt(i).GetType() == typeof(Adult))
                     {
                         child1 = castAsChild(personSet.ElementAt(k));
                         adult1 = castAsAdult(personSet.ElementAt(i));
                         match = matchAdultChild(adult1, child1);
-                    } else
+                    }
+                    else
                     {
                         child1 = castAsChild(personSet.ElementAt(k));
                         child2 = castAsChild(personSet.ElementAt(i));
                         match = matchChildren(child1, child2);
                     }
 
-                    if (match)
+                    if (match == true)
                     {
+
                         if (personSet.ElementAt(k) != personSet.ElementAt(i))
                         {
                             matchedArr.Add(personSet.ElementAt(k).ObjectId);
@@ -80,72 +84,28 @@ namespace Assignment_1
                     else answer = false;
                 }
             }
-
             return answer;
         }
 
         bool matchAdults(Adult a1, Adult a2)
         {
-            if (a1.StateFileNumber != null && a2.StateFileNumber != null && a1.StateFileNumber == a2.StateFileNumber)
+            if (a1.FirstName != null && a2.FirstName != null && a1.FirstName == a2.FirstName && a1.LastName != null && a2.LastName != null && a1.LastName == a2.LastName)
             {
-                if (a1.BirthDay == a2.BirthDay && a1.BirthMonth == a2.BirthMonth && a1.BirthYear == a2.BirthYear)
+                if (a1.phone1 != null && a2.phone1 != null && a1.phone1 == a2.phone1)
                     return true;
-                else
-                    return false;
-            }
-            else if (a1.SocialSecurityNumber != null && a2.SocialSecurityNumber != null && a1.SocialSecurityNumber == a2.SocialSecurityNumber)
-            {
-                if (a1.BirthDay == a2.BirthDay && a1.BirthMonth == a2.BirthMonth && a1.BirthYear == a2.BirthYear)
-                    return true;
-                else
-                    return false;
+                else return false;
             }
             else return false;
         }
 
         bool matchAdultChild(Adult a1, Child c1)
         {
-            if (a1.StateFileNumber != null && c1.StateFileNumber != null && a1.StateFileNumber == c1.StateFileNumber)
-            {
-                if (a1.BirthDay == c1.BirthDay && a1.BirthMonth == c1.BirthMonth && a1.BirthYear == c1.BirthYear)
-                    return true;
-                else
-                    return false;
-            }
-            else if (a1.SocialSecurityNumber != null && c1.SocialSecurityNumber != null && a1.SocialSecurityNumber == c1.SocialSecurityNumber)
-            {
-                if (a1.BirthDay == c1.BirthDay && a1.BirthMonth == c1.BirthMonth && a1.BirthYear == c1.BirthYear)
-                    return true;
-                else
-                    return false;
-            }
-            else return false;
+            return false;
         }
 
         bool matchChildren(Child c1, Child c2)
         {
-            if (c1.StateFileNumber != null && c2.StateFileNumber != null && c1.StateFileNumber == c2.StateFileNumber)
-            {
-                if (c1.BirthDay == c2.BirthDay && c1.BirthMonth == c2.BirthMonth && c1.BirthYear == c2.BirthYear)
-                    return true;
-                else
-                    return false;
-            }
-            else if (c1.SocialSecurityNumber != null && c2.SocialSecurityNumber != null && c1.SocialSecurityNumber == c2.SocialSecurityNumber)
-            {
-                if (c1.BirthDay == c2.BirthDay && c1.BirthMonth == c2.BirthMonth && c1.BirthYear == c2.BirthYear)
-                    return true;
-                else
-                    return false;
-            }
-            else if (c1.NewbornScreeningNumber != null && c1.NewbornScreeningNumber != null && c1.NewbornScreeningNumber == c2.NewbornScreeningNumber)
-            {
-                if (c1.BirthDay == c2.BirthDay && c1.BirthMonth == c2.BirthMonth && c1.BirthYear == c2.BirthYear)
-                    return true;
-                else
-                    return false;
-            }
-            else return false;
+            return false;
         }
 
         Adult castAsAdult(Person p)
@@ -160,6 +120,6 @@ namespace Assignment_1
             Child c = new Child();
             c = (Child)p;
             return c;
-        }        
+        }
     }
 }
